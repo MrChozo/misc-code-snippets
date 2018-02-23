@@ -18,13 +18,11 @@
 function calc($a, $b) {
   $c = $a + $b;
 
-  function plus5() {
-    // $c is local and undefined
-    var_dump($c); // NULL
-    return $c + 5;
+  function dumbReturn($c) {
+    return $c;
   }
   
-  return plus5();
+  return dumbReturn($c);
 }
 
-var_dump(calc(1, 2)); // 5
+var_dump(calc(1, 2)); // 3
