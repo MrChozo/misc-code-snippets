@@ -12,6 +12,7 @@ exit;
 $input = "foobar";
 $input = array("foobar", "qux", "baz");
 $input = array("foobar" => "foo", "quxbar" => "qux", "bazbar" => "baz");
+$input = array("foobar" => true, "quxbar" => false, "bazbar" => "baz");
 $output = json_encode($input);
 
 var_dump($output);
@@ -20,3 +21,4 @@ exit;
 // string(8) ""foobar""
 // string(22) "["foobar","qux","baz"]"
 // string(46) "{"foobar":"foo","quxbar":"qux","bazbar":"baz"}"
+// string(45) "{"foobar":true,"quxbar":false,"bazbar":"baz"}"
