@@ -40,7 +40,7 @@ CREATE TABLE fileobjects_forms (
 ALTER TABLE fileobjects_forms OWNER TO [[[[[[new_owner]]]]]];
 
 -- Get column names, displayed alphabetically
-SELECT * FROM information_schema.columns
+SELECT column_name FROM information_schema.columns
 WHERE table_schema = 'public' 
 AND table_name = 'courses' 
 ORDER BY column_name ASC;
