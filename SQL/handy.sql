@@ -42,5 +42,11 @@ ALTER TABLE fileobjects_forms OWNER TO [[[[[[new_owner]]]]]];
 -- Get column names, displayed alphabetically
 SELECT column_name FROM information_schema.columns
 WHERE table_schema = 'public' 
-AND table_name = 'courses' 
+AND table_name = 'courses'
 ORDER BY column_name ASC;
+
+-- Get all table names from a DB/schema
+-- Helpful for copying as plain text or potentially using as a sub-query
+SELECT DISTINCT table_name FROM information_schema.columns
+WHERE table_schema = 'public' 
+ORDER BY table_name ASC;
