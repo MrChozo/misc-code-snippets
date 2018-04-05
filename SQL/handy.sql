@@ -18,9 +18,15 @@ WHERE id BETWEEN 70 AND 74;
 ALTER TABLE forms ALTER COLUMN is_deleted SET DEFAULT FALSE;
 ALTER TABLE forms ALTER COLUMN is_deleted SET NOT NULL;
 
--- Add a row of specified data
+-- Insert a row of specified data
 INSERT INTO parameters (id, key, value, type, active, "group")
 VALUES (43, 'Blogs - Show Post Author', '1', 'text', TRUE, 'Look and Feel');
+
+-- Insert multiple rows of specified data
+INSERT INTO parameters (id, key, value, type, active, "group")
+VALUES (43, 'Blogs - Show Post Author', '1', 'text', TRUE, 'Look and Feel'),
+	   (44, 'Blogs - Something Else A', '1', 'text', TRUE, 'Look and Feel'),
+	   (45, 'Blogs - Something Else B', '1', 'text', TRUE, 'Look and Feel');
 
 -- Display default value
 SELECT column_name, column_default
