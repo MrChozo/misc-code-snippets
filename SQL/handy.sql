@@ -28,6 +28,10 @@ VALUES (43, 'Blogs - Show Post Author', '1', 'text', TRUE, 'Look and Feel'),
 	   (44, 'Blogs - Something Else A', '1', 'text', TRUE, 'Look and Feel'),
 	   (45, 'Blogs - Something Else B', '1', 'text', TRUE, 'Look and Feel');
 
+-- Remove row(s) of data from table
+DELETE FROM events
+WHERE id != 683;
+
 -- Display default value
 SELECT column_name, column_default
 FROM information_schema.columns
@@ -47,7 +51,7 @@ ALTER TABLE fileobjects_forms OWNER TO [[[[[[new_owner]]]]]];
 
 -- Get column names, displayed alphabetically
 SELECT column_name FROM information_schema.columns
-WHERE table_schema = 'public' 
+WHERE table_schema = 'public'
 AND table_name = 'courses'
 ORDER BY column_name ASC;
 
@@ -56,3 +60,11 @@ ORDER BY column_name ASC;
 SELECT DISTINCT table_name FROM information_schema.columns
 WHERE table_schema = 'public' 
 ORDER BY table_name ASC;
+
+-- Find duplicate values in a single field in a single table
+SELECT * FROM table t1
+WHERE (
+	SELECT count(*) FROM table t2
+	WHERE t1.field = t2.field
+) > 1
+ORDER BY field;
