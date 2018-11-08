@@ -5,15 +5,9 @@ function countUniqueValues(sortedArr) {
 	let count = 0;
 	for (let i = 0; i < sortedArr.length; i++) {
 		for (let j = i + 1; j < sortedArr.length; j++) {
-			let compareMe = sortedArr[i];
-			
-
-			if (sortedArr[j] > compareMe) {
-
+			if (sortedArr[i] < sortedArr[j]) {
+				count++;
 			}
-			compareMe
-			count++;
-			
 		}
 	}
 	return count;
