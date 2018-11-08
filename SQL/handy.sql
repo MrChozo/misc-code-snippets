@@ -9,6 +9,11 @@ ALTER TABLE forms DROP COLUMN fileobject_id;
 -- Set data in a column
 UPDATE forms SET is_deleted = FALSE;
 
+UPDATE users
+SET is_admin = TRUE
+   ,status = 10
+WHERE id = 1;
+
 -- Set data in a column by a range of rows
 UPDATE formsubmissions
 SET is_deleted = FALSE
