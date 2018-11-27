@@ -4,8 +4,11 @@
 function countUniqueValues(sortedArr) {
 	let count = 0;
 	for (let i = 0; i < sortedArr.length; i++) {
-		for (let j = i + 1; j < sortedArr.length; j++) {
+		var newIndex = 1;
+
+		for (let j = newIndex; j < sortedArr.length; j++) {
 			if (sortedArr[i] < sortedArr[j]) {
+				
 				count++;
 			}
 		}
