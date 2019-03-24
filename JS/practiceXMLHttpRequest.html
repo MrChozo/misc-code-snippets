@@ -1,0 +1,60 @@
+<!-- I was studying AJAX and PHP-to-JS communication, and I read this: -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started -->
+
+<label>Your name:
+  <input type="text" id="ajaxTextbox" />
+</label>
+<span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+  Make a request
+</span>
+
+
+
+<script type="text/javascript">
+(function() {
+  var httpRequest;
+  document.getElementById("ajaxButton").onclick = function() { 
+      var userName = document.getElementById("ajaxTextbox").value;
+      makeRequest('test.php', userName); 
+  };
+
+  function makeRequest(url, userName) {
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('POST', url);
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send('userName=' + encodeURIComponent(userName));
+  }
+
+  function alertContents() {
+    try {
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+          var response = JSON.parse(httpRequest.responseText);
+          alert(response.computedString);
+        } else {
+          alert('There was a problem with the request.');
+        }
+      }
+    }
+    catch( e ) {
+      alert('Caught Exception: ' + e.description);
+    }
+  }
+})();
+</script>
+
+
+
+<?php
+  // test.php
+  $name = (isset($_POST['userName'])) ? $_POST['userName'] : 'no name';
+  $computedString = "Hi, " . $name . "!";
+  $array = ['userName' => $name, 'computedString' => $computedString];
+  echo json_encode($array);
+?>
