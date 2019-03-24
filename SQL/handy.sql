@@ -73,3 +73,16 @@ WHERE (
 	WHERE t1.field = t2.field
 ) > 1
 ORDER BY field;
+
+-- Get all of a timestamp field from a single day (cast the timestamp into a date)
+SELECT *
+FROM itemversionrequests
+WHERE created::date = '2018-11-30';
+
+
+-- Getting all of the tables that have columns similar to "order_id"
+-- There were extras that I pruned out manually in sjOrderColumns.csv
+SELECT table_name, column_name FROM information_schema.columns
+WHERE table_schema = 'public'
+  AND column_name ILIKE '%order%'
+ORDER BY table_name ASC, column_name ASC;
