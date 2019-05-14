@@ -79,6 +79,11 @@ SELECT *
 FROM itemversionrequests
 WHERE created::date = '2018-11-30';
 
+-- Get all of a timestamp field from a year (can use this to get other parts of a datetime too)
+SELECT *
+FROM itemversionrequests
+WHERE date_part('year', created) = '2018';
+
 
 -- Getting all of the tables that have columns similar to "order_id"
 -- There were extras that I pruned out manually in sjOrderColumns.csv
