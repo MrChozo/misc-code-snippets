@@ -40,7 +40,10 @@ function sockMerchant($n, $ar) {
 // My 3v4l.org "main"
 //$n = 9;
 //$ar = [10, 20, 20, 10, 10, 30, 50, 10, 20];
-//var_dump(sockMerchant($n, $ar));
+
+$n = 15;
+$ar = [6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5];
+var_dump(sockMerchant($n, $ar)); // Should be 6
 
 // Their "main"
 $fptr = fopen(getenv("OUTPUT_PATH"), "w");
