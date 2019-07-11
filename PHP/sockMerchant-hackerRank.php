@@ -25,14 +25,11 @@
 function sockMerchant($n, $ar) {
     define("PAIR", 2);
     $pairs = 0;
-    for ($i = 0; $i < count($ar); $i++) {
+    for ($i = 0; $i < $n; $i++) {
         $color = array_keys($ar, $ar[$i]);
 
         $pairs += floor(count($color) / PAIR);
 
-        foreach ($color as $c) {
-            unset($ar[$c]);
-        }
     }
     return $pairs;
 }
