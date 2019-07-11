@@ -84,10 +84,24 @@ SELECT *
 FROM itemversionrequests
 WHERE date_part('year', created) = '2018';
 
-
 -- Getting all of the tables that have columns similar to "order_id"
 -- There were extras that I pruned out manually in sjOrderColumns.csv
 SELECT table_name, column_name FROM information_schema.columns
 WHERE table_schema = 'public'
   AND column_name ILIKE '%order%'
 ORDER BY table_name ASC, column_name ASC;
+
+-- Boot active users out of a database
+SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'TARGET_DB' -- ← change this to your DB
+  AND pid <> pg_backend_pid();
+
+-- Many-to-Many join using an intermediary join table
+SELECT *
+FROM orderitems
+  JOIN orders
+    ON orderitems.order_id = orders.id
+  JOIN items
+    ON orderitems.item_id = items.id
+WHERE orders.id = 36951;
