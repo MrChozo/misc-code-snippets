@@ -11,11 +11,14 @@
  *   color. The number of pairs is 2.
  *
  * Pseudocode:
- *   Loop through pile of socks
- *   Checking a color at a time
- *   Add one to pairs total when a full match is found
- *   Cool points: Unset each color as you go
- *   Return pairs total
+ *   loop through all socks
+ *       get unique socks
+ *
+ *   loop through unique socks
+ *       count total of each color
+ *       compare and calculate matches
+ *       add matches to total pairs
+ *
  *
  * example:
  *   $n = 9
@@ -23,15 +26,20 @@
  *   returns  3
  */
 function sockMerchant($n, $ar) {
-    define("PAIR", 2);
-    $pairs = 0;
-    for ($i = 0; $i < $n; $i++) {
-        $color = array_keys($ar, $ar[$i]);
+    $pair = 2;
+    $total_pairs = 0;
 
-        $pairs += floor(count($color) / PAIR);
+    $unique_socks = array_unique($ar);
 
+    foreach ($unique_socks as $sock) {
+        $color = array_keys($ar, $sock);
+        $count = count($color);
+        $remainder = $count % $pair;
+        $matches = ($count - $remainder) / $pair;
+
+        $total_pairs += $matches;
     }
-    return $pairs;
+    return $total_pairs;
 }
 
 // My 3v4l.org "main"
@@ -40,6 +48,7 @@ $ar = [6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5];
 var_dump(sockMerchant($n, $ar)); // Should be 6
 
 // Their "main"
+/*
 $fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
 $stdin = fopen("php://stdin", "r");
@@ -56,3 +65,4 @@ fwrite($fptr, $result . "\n");
 
 fclose($stdin);
 fclose($fptr);
+*/
