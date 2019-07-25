@@ -19,6 +19,13 @@ UPDATE formsubmissions
 SET is_deleted = FALSE
 WHERE id BETWEEN 70 AND 74;
 
+-- Copy data from one table to another with conditions
+UPDATE "products"
+SET "model" = "t2".value
+FROM "attributes" AS "t2"
+WHERE "products".id = "t2"."product_id"
+  AND "t2"."title" ILIKE '%model%';
+
 -- Add/edit a column's constraint(s)
 ALTER TABLE forms ALTER COLUMN is_deleted SET DEFAULT FALSE;
 ALTER TABLE forms ALTER COLUMN is_deleted SET NOT NULL;
