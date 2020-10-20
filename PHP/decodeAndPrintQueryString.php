@@ -1,6 +1,6 @@
 <?php
 
-class QueryString
+class QueryDecoder
 {
     private $inputString;
     private $decodedArray;
@@ -21,10 +21,18 @@ class QueryString
         return $this->inputString;
     }
 
-    public function decode($inputString)
+    public function printDecoded()
+    {
+        print_r($this->getDecodedArray());
+    }
+
+    private function decode($inputString)
     {
         $out = [];
-        parse_str($inputString, $out);
+
+        $noEntities = html_entity_decode($inputString);
+
+        parse_str($noEntities, $out);
 
         return (is_array($out)) ? $out : [];
     }
@@ -40,11 +48,12 @@ class QueryString
     }
 }
 
+$line = readline('Query string? ');
+readline_add_history($line);
 
-
-if (! empty($argv[1])) {
-    $queryString = new QueryString($argv[1]);
-    print_r($queryString->getDecodedArray());
+if (! empty($line)) {
+    $decoder = new QueryDecoder($line);
+    $decoder->printDecoded();
 } else {
     echo 'No arg passed - URL query string expected as only argument.';
 }
