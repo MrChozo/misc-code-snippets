@@ -55,6 +55,9 @@ if (! empty($line)) {
     $decoder = new QueryDecoder($line);
     $decoder->printDecoded();
 } else {
-    echo 'No arg passed - URL query string expected as only argument.';
+    echo "You didn't enter anything. \n";
+    echo "Please answer with a URL-encoded query string. E.g.:\n";
+    echo "\n";
+    echo "TASK=beginmanage&rrn=000009607&SmurfID=30748409450320201020096273262135&rnd=33356\n";
 }
 exit;
