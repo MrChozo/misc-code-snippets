@@ -1,4 +1,4 @@
-/* Handy SQL statements */
+/* Handy PostgreSQL statements */
 
 -- Add a column
 ALTER TABLE forms ADD COLUMN is_deleted boolean;
@@ -62,6 +62,7 @@ CREATE TABLE fileobjects_forms (
 ALTER TABLE fileobjects_forms OWNER TO [[[[[[new_owner]]]]]];
 
 -- Get column names, displayed alphabetically
+-- Use table_schema = 'QS36F' for IBM
 SELECT column_name FROM information_schema.columns
 WHERE table_schema = 'public'
 AND table_name = 'courses'
@@ -70,7 +71,7 @@ ORDER BY column_name ASC;
 -- Get all table names from a DB/schema
 -- Helpful for copying as plain text or potentially using as a sub-query
 SELECT DISTINCT table_name FROM information_schema.columns
-WHERE table_schema = 'public' 
+WHERE table_schema = 'public'
 ORDER BY table_name ASC;
 
 -- Find duplicate values in a single field in a single table
