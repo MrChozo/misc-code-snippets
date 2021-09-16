@@ -26,25 +26,39 @@ class QueryDecoder
         print_r($this->getDecodedArray());
     }
 
-    private function decode($inputString)
-    {
-        $out = [];
-
-        $noEntities = html_entity_decode($inputString);
-
-        parse_str($noEntities, $out);
-
-        return (is_array($out)) ? $out : [];
-    }
-
     private function setDecodedArray($string)
     {
-        $this->decodedArray = $this->decode($string);
+        $this->decodedArray = $this->proper_parse_str($string);
     }
 
     private function setInputString($string)
     {
         $this->inputString = $string;
+    }
+
+    // From php.net comments. Deals with duplicate keys.
+    private function proper_parse_str($str)
+    {
+        $arr = [];
+
+        $pairs = explode('&', $str);
+
+        foreach ($pairs as $i) {
+            list($name, $value) = explode('=', $i, 2);
+
+            if (isset($arr[$name])) {
+                if (is_array($arr[$name])) {
+                    $arr[$name][] = $value;
+                }
+                else {
+                    $arr[$name] = [$arr[$name], $value];
+                }
+            }
+            else {
+                $arr[$name] = $value;
+            }
+        }
+        return $arr;
     }
 }
 
