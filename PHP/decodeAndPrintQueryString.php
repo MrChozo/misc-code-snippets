@@ -41,6 +41,14 @@ class QueryDecoder
     {
         $arr = [];
 
+        /*
+         * TODO: Remove everything to the left of the initial query question mark, in case "PROGRAM.pgm" is
+         * included with the query string
+         *
+         * if (criteria)
+         * $str = substr,($str, '.pgm?');
+         */
+
         $pairs = explode('&', $str);
 
         foreach ($pairs as $i) {
