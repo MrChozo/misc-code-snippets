@@ -2,6 +2,7 @@
 // Pulled from:
 // https://slack.engineering/taking-php-seriously-cf7a60065329 linked to
 // https://dl.acm.org/citation.cfm?id=2660199 (Figure 2)
+
 $foo = true;
 if ($foo) {
 function weirdArg(&$x) { $x = 'surprise!'; }
