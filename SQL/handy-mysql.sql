@@ -12,3 +12,4 @@ FROM `Album` AS `Album`
 GROUP BY `Album`.`Title`
 ORDER BY `Title`
 LIMIT 10;
+
