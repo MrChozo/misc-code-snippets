@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>frameset (Deprecated) test</title>
+</head>
+<!--
+    <frameset> and <frame> have been deprecated in favor of using <iframe>, but WorksiteApp still
+    uses them. Naively, I always assumed that the frames used within WorksiteApp were managed using
+    CGI calls somehow. Not sure what part of WorksiteApp made me think this, but now I'm suspicious
+    that they just work using <frame> elements. This is my test to prove that out.
+  -->
+<style>
+    #barframe {
+        height: 600px;
+        width: 600px;
+    }
+</style>
+<frameset cols="400, 500">
+    <frame id="fooframe" name="fooframe" src="frameset-test-fooframe.html"></frame>
+    <frame id="barframe" name="barframe"></frame>
+</frameset>
+</html>
