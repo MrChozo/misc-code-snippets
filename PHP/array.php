@@ -1,8 +1,17 @@
 <?php
+$foo = [
+  -1 => [
+    'key' => -1,
+    'title' => "Will Call",
+    'cost' => number_format(0, 2)
+  ]
+];
 
-$result = array('result' => true);
-$result[] = array('reason' => "foo");
+$return = array();
+$return[-1]['key'] = -1;
+$return[-1]['title'] = "Will Call";
+$return[-1]['cost'] = number_format(0, 2);
 
-// echo "<pre>".var_dump($result)."</pre>";
-// var_dump($result);
-print_r($result);
+var_dump($foo === $return);
+exit;
+
