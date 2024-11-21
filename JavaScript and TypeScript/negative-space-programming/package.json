@@ -1,0 +1,14 @@
+{
+  "name": "negative-space-programming",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Weston",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node.console": "^1.0.0"
+  }
+}
