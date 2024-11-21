@@ -1,0 +1,1 @@
+Check your JS education-notes for relevant documentation.

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext", // Ensure modern JavaScript is targeted
+    "outDir": "./dist", // Specify an output directory
+    "moduleResolution": "node"
+  }
+}
